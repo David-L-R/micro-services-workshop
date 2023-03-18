@@ -7,8 +7,11 @@
     "client": "cd client && npm start",
     "posts_server": "cd posts && npm start",
     "comments_server": "cd comments && npm start",
-    "start": "concurrently \"npm run client\" \"npm run posts_server\" \"npm run comments_server\""
+    "query_server": "cd query && npm start",
+    "event_server": "cd event && npm start",
+    "start": "concurrently \"npm run posts_server\" \"npm run comments_server\" \"npm run query_server\" \"npm run event_server\""
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
