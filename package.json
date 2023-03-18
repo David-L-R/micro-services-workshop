@@ -4,9 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "cd client && npm start",
+    "posts_server": "cd posts && npm start",
+    "comments_server": "cd comments && npm start",
+    "start": "concurrently \"npm run client\" \"npm run posts_server\" \"npm run comments_server\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
 }
