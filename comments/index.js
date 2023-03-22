@@ -9,6 +9,28 @@ app.use(express.urlencoded({ extended: true }));
 
 const comments = {};
 
+app.post("/events", (req, res) => {
+  console.log("Event Received on Query: ", req.body.type);
+  const { type, data } = req.body;
+
+  if (type === "CommentModerated") {
+    const { id, message } = data;
+
+    const comment = comments[postId].find((comment) => comment.id === id);
+
+    if (!comment) {
+      return;
+    }
+
+    comment = { ...comment, ...data };
+
+    axios.post("http://localhost:5003/events", {
+      type: "CommentUpdated",
+      data: comment,
+    });
+  }
+});
+
 app.get("/posts/:id/comments", (req, res) => {
   const { id } = req.params;
   res.send(comments[id] || []);
@@ -24,6 +46,7 @@ app.post("/posts/:id/comments", async (req, res) => {
       {
         id: commentId,
         message,
+        status: "pending",
       },
     ];
     axios.post("http://localhost:5003/events", {

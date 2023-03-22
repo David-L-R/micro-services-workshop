@@ -29,6 +29,10 @@ app.post("/events", (req, res) => {
   console.log(posts);
 });
 
+app.get("/query", (req, res) => {
+  res.send(posts);
+});
+
 app.listen(5002, () => {
   console.log("Listening on 5002");
 });
