@@ -9,13 +9,13 @@ app.use(express.urlencoded({ extended: true }));
 
 const posts = {};
 
-app.post("/events", (req, res) => {
-  const { type, data } = req.body;
-});
+// app.post("/events", (req, res) => {
+//   const { type, data } = req.body;
+// });
 
-app.get("/posts", (req, res) => {
-  res.send(posts);
-});
+// app.get("/posts", (req, res) => {
+//   res.send(posts);
+// });
 
 app.post("/posts", async (req, res) => {
   try {
@@ -25,8 +25,6 @@ app.post("/posts", async (req, res) => {
       id,
       title,
     };
-
-    console.log("POSTS", posts);
 
     axios.post("http://localhost:5003/events", {
       type: "PostCreated",

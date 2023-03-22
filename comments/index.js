@@ -14,7 +14,7 @@ app.post("/events", (req, res) => {
   const { type, data } = req.body;
 
   if (type === "CommentModerated") {
-    const { id, message } = data;
+    const { id } = data;
 
     const comment = comments[postId].find((comment) => comment.id === id);
 
@@ -31,10 +31,10 @@ app.post("/events", (req, res) => {
   }
 });
 
-app.get("/posts/:id/comments", (req, res) => {
-  const { id } = req.params;
-  res.send(comments[id] || []);
-});
+// app.get("/posts/:id/comments", (req, res) => {
+//   const { id } = req.params;
+//   res.send(comments[id] || []);
+// });
 
 app.post("/posts/:id/comments", async (req, res) => {
   try {

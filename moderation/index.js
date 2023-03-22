@@ -17,15 +17,15 @@ app.post("/events", (req, res) => {
   if (type === "CommentCreated") {
     const { message } = data;
 
+    data.status = "approved";
+
     if (message.includes("orange")) {
       data.status = "rejected";
-    } else {
-      data.status = "approved";
     }
 
     axios.post("http://localhost:5003/events", {
       type: "CommentModerated",
-      data: { id, message, postId },
+      data,
     });
   }
 });
