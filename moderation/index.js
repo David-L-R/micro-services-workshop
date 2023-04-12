@@ -30,6 +30,6 @@ app.post("/events", (req, res) => {
   }
 });
 
-app.listen(5003, () => {
-  console.log("Listening on 5003");
+app.listen(5004, () => {
+  console.log("Listening on 5004");
 });

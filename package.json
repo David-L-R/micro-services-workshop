@@ -9,7 +9,8 @@
     "comments_server": "cd comments && npm start",
     "query_server": "cd query && npm start",
     "event_server": "cd event && npm start",
-    "start": "concurrently \"npm run posts_server\" \"npm run comments_server\" \"npm run query_server\" \"npm run event_server\""
+    "moderation_server": "cd moderation && npm start",
+    "start": "concurrently \"npm run posts_server\" \"npm run comments_server\" \"npm run query_server\" \"npm run event_server\" \"npm run moderation_server\""
   },
   "type": "module",
   "keywords": [],

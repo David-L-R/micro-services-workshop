@@ -11,10 +11,12 @@ const comments = {};
 
 app.post("/events", (req, res) => {
   console.log("Event Received on Query: ", req.body.type);
-  const { type, data } = req.body;
+  const { type, data, postId } = req.body;
 
   if (type === "CommentModerated") {
     const { id } = data;
+
+    if (!comments[postId]) return;
 
     const comment = comments[postId].find((comment) => comment.id === id);
 

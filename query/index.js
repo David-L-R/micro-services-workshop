@@ -23,6 +23,9 @@ app.post("/events", (req, res) => {
   if (type === "CommentCreated") {
     const { id, postId, message } = data;
     const post = posts[postId];
+
+    if (!post) return;
+
     post.comments.push({ id, message });
   }
 
@@ -32,6 +35,23 @@ app.post("/events", (req, res) => {
     const comment = post.comments.find((comment) => comment.id === id);
     comment = { ...comment, ...data };
   }
+
+  console.log(
+    Object.entries(posts).forEach((post) => {
+      console.log({
+        id: post.id,
+        title: post.title,
+        comments: post.comments,
+      });
+      post.comments.forEach((comment, index) => {
+        console.log(`comment ${index}`, {
+          id: comment.id,
+          message: comment.message,
+          status: comment.status,
+        });
+      });
+    })
+  );
 });
 
 app.get("/query", (req, res) => {
