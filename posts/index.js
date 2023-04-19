@@ -1,6 +1,6 @@
 import express from "express";
 import { randomBytes } from "crypto";
-import { errorHandler } from "../utils/errorHandler.js";
+import { errorHandler } from "./utils/errorHandler.js";
 import axios from "axios";
 const app = express();
 
